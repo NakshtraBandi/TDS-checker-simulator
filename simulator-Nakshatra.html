@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TDS Level Checker Simulator</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+
+        #result {
+            font-size: 24px;
+            margin-top: 20px;
+        }
+
+        #inputBox {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>TDS Level Checker Simulator</h1>
+    <div id="inputBox">
+        <label for="tdsInput">Enter TDS Level:</label>
+        <input type="number" id="tdsInput" placeholder="Enter TDS level">
+        <button onclick="checkTDS()">Check</button>
+    </div>
+    <div id="result"></div>
+
+    <script>
+        function checkTDS() {
+            // Get the input value
+            var tdsInput = document.getElementById('tdsInput').value;
+
+            // Check if the input is a valid number
+            if (isNaN(tdsInput)) {
+                alert("Please enter a valid number.");
+                return;
+            }
+
+            // Convert the input to a number
+            var tdsLevel = parseFloat(tdsInput);
+
+            // Display the result based on the TDS level
+            var resultDiv = document.getElementById('result');
+            if (tdsLevel >= 100 && tdsLevel <= 300) {
+                resultDiv.style.color = 'green';
+                resultDiv.innerHTML = 'The TDS level is within the acceptable range. It is safe.';
+            } else {
+                resultDiv.style.color = 'red';
+                resultDiv.innerHTML = 'Warning! The TDS level is outside the acceptable range. It may not be safe.';
+            }
+        }
+    </script>
+</body>
+</html>
